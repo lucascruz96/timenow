@@ -1,0 +1,126 @@
+<div class="wrapper">
+	    <div class="sidebar" data-color="purple" data-image="../assets/images/sidebar-1.jpg">
+
+			<div class="logo" align="center">
+				<img src="/assets/logo.png" alt="Logo Principal" height="43" class="logo-principal"/>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                <li class="">	                
+	                <%= link_to dashboard_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "dashboard", :class => "material-icons" %>
+					<%= content_tag :p, "Dashboard", :class => "" %>
+					<% end %>
+	                </li>
+	                <li class="active">
+	                 <%= link_to cadastroTarefas_url(:id => session[:user_id]) do %>
+						<%= content_tag :i, "alarm", :class => "material-icons" %>
+						<%= content_tag :p, "Cadastro de Tarefas", :class => "" %>
+					  <% end %>	              
+	                </li>
+	                <li class="">
+	                  <%= link_to relatorios_url(:id => session[:user_id]) do %>
+						<%= content_tag :i, "pie_chart", :class => "material-icons" %>
+						<%= content_tag :p, "Relatórios", :class => "" %>
+					  <% end %>
+	                </li>
+	            </ul>
+	    	</div>
+		</div>
+
+	    <div class="main-panel">
+	    
+	        <div class="content fundo-cadastro-tarefas">
+	            <div class="container-fluid">
+
+	                <div class="col-md-3"></div>
+
+	                <div class="col-md-6 panel cadastro-tarefas">
+                   
+                   		<form class="new_task" id="new_task" action="/tasks" method="post">
+
+							<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+	                    <div class="panel-header" align="center">
+  						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    						<input class="mdl-textfield__input" id="task_title" type="text" class="nome-tarefa" name="task[title]">
+    						<label class="mdl-textfield__label" for="task_title">Nome da Tarefa</label>
+  						</div>
+  						</div>
+	                    <div class="panel-content">
+
+							  <div class="mui-textfield">
+							  	<label class="titleLabels">Descrição: </label><br>
+							    <textarea id="task_description" name="task[description]" placeholder="Digite a Descrição da Atividade" rows="3" cols="40"></textarea>
+							  </div><br>
+
+							 <table class="cadastro-atividade">
+							 <tr>
+							 <td><label class="titleLabels">Tempo Gasto: </label></td>
+							 <td><div class="mui-textfield mui-textfield--float-label">				  
+	   						  <label class="titleLabels1">0h</label>  					 
+	  						 </div></td>
+	  						 </tr>
+
+	  						 <tr>
+	  						 <td><label class="titleLabels">Concluído: </label></td> 
+							 <td><label class="mdl-switch mdl-js-switch mdl-js-ripple-effect titleLabels" for="switch-1">
+							 <input type="checkbox" id="switch-1" class="mdl-switch__input"> 
+							 </label></td>
+							 </tr>
+
+							 <tr>
+							 <td><label class="titleLabels">Lançar horas: </label></td>
+	  						 <td><div class="mui-textfield mui-textfield--float-label">				  
+	   						 <input type="text" class="input-atividade number" name="task[spentTime]" id="task_spentTime" value="">	 
+	  						 </div></td>
+	  						 </tr>
+	  						 </table><br>
+
+	  						 <table class="cadastro-atividade">
+	  						 <tr>
+	  						 <td><select class="form-control boxed-input" name="task[id_category]" id="task_category" >
+							    <option class="opcoes-atividades" value="" disabled selected>Categoria</option>
+							    <option class="opcoes-atividades" value="1">Estudos</option>
+							    <option class="opcoes-atividades" value="2">Lazer</option>
+							    <option class="opcoes-atividades" value="3">Trabalho</option>
+							</select></td>
+	  						 <td><select class="form-control boxed-input" name="task[idDayWeek]" id="task_day_week" >
+							    <option class="opcoes-atividades" value="" disabled selected>Dia da Semana</option>
+							    <option class="opcoes-atividades" value="1">Domingo</option>
+							    <option class="opcoes-atividades" value="2">Segunda-Feira</option>
+							    <option class="opcoes-atividades" value="3">Terça-Feira</option>
+							    <option class="opcoes-atividades" value="4">Quarta-Feira</option>
+							    <option class="opcoes-atividades" value="5">Quinta-Feira</option>
+							    <option class="opcoes-atividades" value="6">Sexta-Feira</option>
+							    <option class="opcoes-atividades" value="7">Sábado</option>
+							</select></td>
+							</tr>
+							</table><br>
+
+						
+							<div class="btn-atividades">
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background:#4242ce; color: white;" name="commit">Aplicar</button>&nbsp;
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect cancelar" style="background: #eb2828; color: white;">Cancelar</button>
+							</div>
+	                    </div>
+	                </div>
+				</form>	                
+	        </div>
+			<footer class="footer rodape-principal">
+	            <div class="container-fluid">	                
+	                <p class="copyright pull-right">
+	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Time Now</a>, Eu No Controle do Meu Tempo
+	                </p>
+	            </div>
+	        </footer>
+	    </div>
+	</div>
+
+<style type="text/css">
+.list-group .list-group-item.active{
+	text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+}
+</style>

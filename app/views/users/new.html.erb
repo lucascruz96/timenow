@@ -1,0 +1,42 @@
+<hgroup>
+  <%=image_tag("logo.png")%>
+</hgroup>
+<%= form_for @user do |f| %>
+              <% if @user.errors.any? %>
+              <div id="error_explanation">
+                          <div class="alert-error">
+                                     O formulário contém <%= pluralize(@user.errors.count, "erro") %>.
+                          </div>
+                          <ul>
+                                     <% @user.errors.full_messages.each do |msg| %>
+                                     <li><%= msg %></li>
+                                     <% end %>
+                          </ul>
+              </div>
+  <% end %>
+  <div class="group">
+              <%= f.text_field :name %>
+              <label class="label">Nome</label>
+  </div>
+  <div class="group">
+              <%= f.email_field :email %>
+              <label class="label">E-mail</label>
+  </div>
+  <div class="group">
+              <%= f.text_field :job %>
+              <label class="label">Profissão</label>
+  </div>
+  <div class="group">
+              <%= f.password_field :password, maxlength: "4" %>
+              <label class="label">Senha</label>
+  </div>
+  <div class="group">
+              <%= f.password_field :password_confirmation, maxlength: "4" %>
+              <label class="label">Confirmar senha</label>
+  </div>
+              <div class="actions">
+                          <%= f.submit "Cadastrar", class: "button buttonBlue"%>
+              </div>
+<% end %>
+
+<p align="center">Já é usuário? <%= link_to "Faça login", sign_in_path %></p>

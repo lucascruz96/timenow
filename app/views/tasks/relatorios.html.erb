@@ -1,0 +1,220 @@
+<div class="wrapper">
+	    <div class="sidebar" data-color="purple" data-image="../assets/images/sidebar-1.jpg">
+
+			<div class="logo" align="center">
+				<img src="/assets/logo.png" alt="Logo Principal" height="43" class="logo-principal"/>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                <li class="">	                
+	                <%= link_to dashboard_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "dashboard", :class => "material-icons" %>
+					<%= content_tag :p, "Dashboard", :class => "" %>
+					<% end %>
+	                </li>
+	                <li class="">
+	                    <a href="http://localhost:3000/cadastroTarefas">
+	                        <i class="material-icons">alarm</i>
+	                        <p>Cadastro de Tarefas</p>
+	                    </a>
+	                </li>
+	                <li class="active">
+	                    <a href="http://localhost:3000/relatorios">
+	                        <i class="material-icons">pie_chart</i>
+	                        <p>Relatórios</p>
+	                    </a>
+	                </li>
+	            </ul>
+	    	</div>
+		</div>
+
+	    <div class="main-panel">
+	    
+	        <div class="content">
+	            <div class="container-fluid">
+	            <h3 class="title-relatorios">Historico</h3>
+
+	            <div class="col-md-4 historico-semana-atual">
+	            <h5 class="subTitle-relatorios">Semana Atual</h5>
+	            <p class="text-relatorios">Total de horas investidas nesta semana: <b>
+	            <% @totalWeek1.each do |tw1| -%>
+	            <%= tw1.total %>
+	            <%end%>	
+	            </b> horas.</p>
+
+	            <p><b>Ranking das Atividades:</b></p>
+
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-historico">
+				      <thead>
+				        <tr>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				  		<% @week1Tasks.each do |week1| -%>
+				        <tr>
+				          <td>
+							  <%= week1.qnt %>
+						  </td>
+				          <td>
+							  <%= week1.hours %>
+						  </td>
+				          <td>
+							  <%= week1.day %>
+						  </td>
+				        </tr>
+				        <%end%>
+				      </tbody>
+				    </table>
+				  </div>
+  				<p><b>Total de Horas Investidas:</b></p>
+  				<p class="text-relatorios">
+  				Trabalho: 
+  				<% @week1Job.each do |wj1| -%>
+  					<%= wj1.total %> horas.
+  				<%end%>
+  				<br>
+  				Lazer: 
+  				<% @week1Fun.each do |wf1| -%>
+  					<%= wf1.total %> horas.
+  				<%end%>
+  				<br>
+  				Estudos: 
+  				<% @week1School.each do |ws1| -%>
+  					<%= ws1.total %> horas.
+  				<%end%>
+  				</p>
+	            </div>
+
+	          	<div class="col-md-4 historico-ultima-semana">
+	          		            <h5 class="subTitle-relatorios">Última Semana</h5>
+	            <p class="text-relatorios">Total de horas investidas nesta semana: <b>
+	            <% @totalWeek2.each do |tw2| -%>
+	            <%= tw2.total %>
+	            <%end%>	
+	            </b> horas.</p>
+
+	            <p><b>Ranking das Atividades:</b></p>
+
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-historico">
+				      <thead>
+				        <tr>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <% @week2Tasks.each do |week2| -%>
+				        <tr>
+				          <td>
+							  <%= week2.qnt %>
+						  </td>
+				          <td>
+							  <%= week2.hours %>
+						  </td>
+				          <td>
+							  <%= week2.day %>
+						  </td>
+				        </tr>
+				        <%end%>
+				      </tbody>
+				    </table>
+				  </div>
+  				<p><b>Total de Horas Investidas:</b></p>
+  				<p class="text-relatorios">
+  				Trabalho: 
+  				<% @week2Job.each do |wj2| -%>
+  					<%= wj2.total %> horas.
+  				<%end%>
+  				<br>
+  				Lazer: 
+  				<% @week2Fun.each do |wf2| -%>
+  					<%= wf2.total %> horas.
+  				<%end%>
+  				<br>
+  				Estudos: 
+  				<% @week2School.each do |ws2| -%>
+  					<%= ws2.total %> horas.
+  				<%end%>
+  				</p>
+	            </div>
+
+	          	<div class="col-md-4 historico-penultima-semana">
+	          	<h5 class="subTitle-relatorios">Penúltima Semana</h5>
+	            <p class="text-relatorios">Total de horas investidas nesta semana: <b>
+	            <% @totalWeek3.each do |tw3| -%>
+	            <%= tw3.total %>
+	            <%end%>	
+	            </b> horas.</p>
+
+	            <p><b>Ranking das Atividades:</b></p>
+
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-historico">
+				      <thead>
+				        <tr>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <% @week3Tasks.each do |week3| -%>
+				        <tr>
+				          <td>
+							  <%= week3.qnt %>
+						  </td>
+				          <td>
+							  <%= week3.hours %>
+						  </td>
+				          <td>
+							  <%= week3.day %>
+						  </td>
+				        </tr>
+				        <%end%>
+				      </tbody>
+				    </table>
+				  </div>
+  				<p><b>Total de Horas Investidas:</b></p>
+  				<p class="text-relatorios">
+  				Trabalho: 
+  				<% @week3Job.each do |wj3| -%>
+  					<%= wj3.total %> horas.
+  				<%end%>
+  				<br>
+  				Lazer: 
+  				<% @week3Fun.each do |wf3| -%>
+  					<%= wf3.total %> horas.
+  				<%end%>
+  				<br>
+  				Estudos: 
+  				<% @week3School.each do |ws3| -%>
+  					<%= ws3.total %> horas.
+  				<%end%>
+  				</p>
+	            </div>
+
+	            </div>
+	        </div>
+			<footer class="footer rodape-principal">
+	            <div class="container-fluid">	                
+	                <p class="copyright pull-right">
+	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Time Now</a>, Eu No Controle do Meu Tempo
+	                </p>
+	            </div>
+	        </footer>
+	    </div>
+	</div>
+
+<style type="text/css">
+.list-group .list-group-item.active{
+	text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+}
+</style>

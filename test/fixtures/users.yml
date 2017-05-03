@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lucas:
+  name: Lucas da Cruz
+  email: lucas@hotmail.com
+  job: programador
+  password: 1234
+
+david:
+  name: David Fernandes
+  email: david@gmail.com
+  job: programador
+  password: 1234

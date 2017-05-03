@@ -1,0 +1,237 @@
+<div class="wrapper">
+	    <div class="sidebar" data-color="purple" data-image="../assets/images/sidebar-1.jpg">
+
+			<div class="logo" align="center">
+				<img src="/assets/logo.png" alt="Logo Principal" height="43" class="logo-principal"/>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                <li class="active">
+	                    <%= link_to dashboard_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "dashboard", :class => "material-icons" %>
+					<%= content_tag :p, "Dashboard", :class => "" %>
+					<% end %>
+	                </li>
+	                <li class="">
+	                    <a href="http://localhost:3000/cadastroTarefas">
+	                        <i class="material-icons">alarm</i>
+	                        <p>Cadastro de Tarefas</p>
+	                    </a>
+	                </li>
+	                <li class="">
+	                <%= link_to relatorios_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "pie_chart", :class => "material-icons" %>
+					<%= content_tag :p, "Relatórios", :class => "" %>
+					<% end %>
+	                </li>
+	            </ul>
+	    	</div>
+		</div>
+
+
+	    <div class="main-panel">
+	    
+	        <div class="content">
+	            <div class="container-fluid">
+
+	            <div class="col-md-12 dashboard" align="center">
+	            <h4 class="title-dashboard">Semana</h4>
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-dashboard">
+				      <thead>
+				        <tr>
+				          <th>Domingo</th>
+				          <th>Segunda-Feira</th>
+				          <th>Terça-Feira</th>
+				          <th>Quarta-Feira</th>
+				          <th>Quinta-Feira</th>
+				          <th>Sexta-Feira</th>
+				          <th>Sábado</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr class="tr-tasks"> 
+				          <td>
+				          	<% week_tasks(1).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>					
+				          </td>
+				          <td>
+				          	<% week_tasks(2).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>
+				          <td>
+				          	<% week_tasks(3).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>
+				          <td>
+				          	<% week_tasks(4).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(5).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(6).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(7).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.idDayWeek %>')">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>				                  
+				        </tr>
+				      </tbody>
+				    </table>
+				  </div>
+  
+	            </div>
+
+	           	<div class="col-md-4 panel recentes">
+                   
+	                    <div class="panel-header">
+	                        <div class="panel-title">
+	                            <h6 class="title-quadro2">Alterados Recentemente</h6>
+	                        </div>
+	                    </div>
+	                   
+	                    <div class="panel-content">
+	                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+						    <% @tasks.each do |task| %>
+	                    		<tr>
+						      	<td class="mdl-data-table__cell--non-numeric pa item-recente" id="item-recente" onclick="liberarEdicao('<%= task.id %>', '<%= task.title %>', '<%= task.description %>', '<%= task.id_category %>', '<%= task.spentTime %>', '<%= task.created_at %>', '<%= task.idDayWeek %>')"><%= task.title %></td>
+						    	</tr>
+      						<%end%>
+						</table>
+	                    </div>
+	                </div> 					
+
+	                <div class="col-md-7 panel editar-tarefas" id="editar-tarefas">
+                    
+                    	<form class="new_task" id="edit_tasks" action="edit_tasks" method="post">
+                    	<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+
+	                    <div class="panel-header">
+	                        <div class="panel-title" align="center">
+
+	                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    							<input class="mdl-textfield__input" id="task_title" type="text" class="nome-tarefa" name="task[title]">
+    							<label class="mdl-textfield__label" for="task_title" id="txtTitle"></label><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="background: #89229b; margin-left:140px;"><i class="material-icons" style="color: white;">border_color</i></button>
+  							</div>	                            
+	                        </div>
+	                    </div>
+	                   
+	                    <div class="panel-content">
+	                    	<form class="mui-form form-editar-tarefas">
+							  <div class="mui-textfield">
+							  	<label class="titleLabels">Descrição: </label><br>
+							    <textarea id="task_description" name="task[description]" placeholder="Digite a Descrição da Atividade" rows="3" cols="40"></textarea>
+							  </div><br>
+
+							 <table class="cadastro-atividade">
+
+							 <input type="text" class="input-atividade number" name="task[id]" id="task_id" value="" hidden="true">
+							 <tr>
+							 <td><label class="titleLabels">Criação: </label></td>
+							 <td><div class="mui-textfield mui-textfield--float-label">				  
+	   						  <label class="titleLabels1" id="dataCricao"></label>  					 
+	  						 </div></td>
+	  						 </tr>
+
+							 <tr>
+							 <td><label class="titleLabels">Tempo Gasto: </label></td>
+							 <td><div class="mui-textfield mui-textfield--float-label">				  
+	   						  <label class="titleLabels1" id="txtSpenTime"></label>  					 
+	  						 </div></td>
+	  						 </tr>
+
+	  						 <tr>
+	  						 <td><label class="titleLabels">Concluído: </label></td> 
+							 <td><label class="mdl-switch mdl-js-switch mdl-js-ripple-effect titleLabels" for="switch-1">
+							 <input type="checkbox" id="switch-1" class="mdl-switch__input"> 
+							 </label></td>
+							 </tr>
+
+							 <tr>
+							 <td><label class="titleLabels">Lançar horas: </label></td>
+	  						 <td><div class="mui-textfield mui-textfield--float-label">				  
+	   						 <input type="text" class="input-atividade number" name="task[spentTime]" id="task_spentTime" value="">    					 
+	  						 </div></td>
+	  						 </tr>
+
+	  						 </table><br>
+
+	  						 <table class="cadastro-atividade">
+	  						 <tr>
+	  						 <td><select class="form-control boxed-input" name="task[id_category]" id="task_category" >
+	  						 <option class="opcoes-atividades" value="" disabled selected>Categoria</option>
+							    <option class="opcoes-atividades" value="1">Estudo</option>
+							    <option class="opcoes-atividades" value="2">Lazer</option>
+							    <option class="opcoes-atividades" value="3">Trabalho</option>
+							</select></td>
+							<td><select class="form-control boxed-input" name="task[idDayWeek]" id="task_day_week" >
+							    <option class="opcoes-atividades" value="" disabled selected>Dia da Semana</option>
+							    <option class="opcoes-atividades" value="1">Domingo</option>
+							    <option class="opcoes-atividades" value="2">Segunda-Feira</option>
+							    <option class="opcoes-atividades" value="3">Terça-Feira</option>
+							    <option class="opcoes-atividades" value="4">Quarta-Feira</option>
+							    <option class="opcoes-atividades" value="5">Quinta-Feira</option>
+							    <option class="opcoes-atividades" value="6">Sexta-Feira</option>
+							    <option class="opcoes-atividades" value="7">Sábado</option>
+							</select></td>
+
+							
+							</tr>
+							</table><br>
+
+							
+
+							<div class="btn-atividades">
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background:#4242ce; color: white;" name="commit">Aplicar</button>&nbsp;
+							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="background: #eb2828; color: white;" onclick="recarregar()">Cancelar</button>
+							</div>
+							
+							</form>
+
+	                    </div>
+	                </div>
+
+	            </div>
+	        </div>
+			<footer class="footer rodape-principal">
+	            <div class="container-fluid">	                
+	                <p class="copyright pull-right">
+	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Time Now</a>, Eu No Controle do Meu Tempo
+	                </p>
+	            </div>
+	        </footer>
+	    </div>
+	</div>
+<style type="text/css">
+.list-group .list-group-item.active{
+	text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+}
+</style>
