@@ -3793,3 +3793,233 @@ Processing by TasksController#dashboard as HTML
 Completed 200 OK in 152ms (Views: 141.9ms | ActiveRecord: 8.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-05-05 00:51:46 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (406.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (16.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Filter chain halted as :block_access rendered or redirected
+Completed 302 Found in 344ms (ActiveRecord: 141.2ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 00:51:53 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (74.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (7.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (54.6ms)
+Completed 200 OK in 30718ms (Views: 30576.2ms | ActiveRecord: 96.6ms)
+
+
+Started GET "/relatorios?id=1" for 127.0.0.1 at 2017-05-05 00:52:34 -0300
+Processing by TasksController#relatorios as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (31.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (59.0ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-16' AND t.updated_at <= '2017-04-22 23:59:00' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (4.0ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-23 23:59:00' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-23' AND t.updated_at <= '2017-04-29 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-30 23:59:00' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-30' AND t.updated_at <= '2017-05-06 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (6.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  Rendering tasks/relatorios.html.erb within layouts/application
+  Rendered tasks/relatorios.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 328ms (Views: 147.1ms | ActiveRecord: 114.3ms)
+
+
+Started GET "/relatorios?id=1" for 127.0.0.1 at 2017-05-05 00:57:33 -0300
+Processing by TasksController#relatorios as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-16' AND t.updated_at <= '2017-04-22 23:59:00' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (2.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-23 23:59:00' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (10.1ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-23' AND t.updated_at <= '2017-04-29 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (7.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-30 23:59:00' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-30' AND t.updated_at <= '2017-05-06 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  Rendering tasks/relatorios.html.erb within layouts/application
+  Rendered tasks/relatorios.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 412ms (Views: 361.2ms | ActiveRecord: 29.7ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 00:58:22 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (89.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (74.2ms)
+Completed 200 OK in 303ms (Views: 171.1ms | ActiveRecord: 101.3ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-05 00:58:25 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 129ms (Views: 127.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2017-05-05 00:58:48 -0300
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"rTGolh/vPVw3l/d0Xq6+QSZzYm/tHyOoMkZUtwkml1vWY0RLOnl4yiTz+0zhoMSfbcFvu8skJL3Mhb0BA3QJNg==", "task"=>{"title"=>"TAREFA 22", "description"=>"TESTE", "spentTime"=>"4", "id_category"=>"1", "idDayWeek"=>"2"}, "commit"=>""}
+  [1m[35m (42.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (220.8ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('TAREFA 22', 'TESTE', 4, 1, 1, '2017-05-05 03:58:48', '2017-05-05 03:58:48', 2)[0m
+  [1m[35m (117.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 510ms (ActiveRecord: 381.0ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 00:58:49 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (7.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 169ms (Views: 142.9ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-05 00:58:59 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 134ms (Views: 132.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2017-05-05 00:59:21 -0300
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"+PFx6u4r3zOs/8f1A3yF6ETcQeDQ8fOa8oGCs4P+P7CDo503y72apb+by828cv82D25MNPbK9I8MQmsFiayh3Q==", "task"=>{"title"=>"Tarefa 23", "description"=>"teste", "spentTime"=>"6:30", "id_category"=>"2", "idDayWeek"=>"3"}, "commit"=>""}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (21.8ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Tarefa 23', 'teste', 6, 2, 1, '2017-05-05 03:59:21', '2017-05-05 03:59:21', 3)[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 44ms (ActiveRecord: 36.6ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 00:59:21 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (6.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (39.3ms)
+Completed 200 OK in 176ms (Views: 150.9ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/edit_tasks" for 127.0.0.1 at 2017-05-05 00:59:35 -0300
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"GAQoaGD/r4BqUQkFOKLK5Q7zoJJNabeMBns1yh9xn+VjVsS1RWnqFnk1BT2HrLA7RUGtRmtSsJn4uNx8FSMBiA==", "task"=>{"title"=>"Tarefa 22", "description"=>"TESTE", "id"=>"11", "spentTime"=>"", "id_category"=>"1", "idDayWeek"=>"2"}, "commit"=>""}
+  [1m[36mTask Load (5.1ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 11 LIMIT 1[0m
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (105.1ms)[0m  [1m[33mUPDATE `tasks` SET `title` = 'Tarefa 22', `spentTime` = NULL, `updated_at` = '2017-05-05 03:59:35' WHERE `tasks`.`id` = 11[0m
+  [1m[35m (75.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 198ms (ActiveRecord: 188.9ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 00:59:35 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (4.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 162ms (Views: 143.7ms | ActiveRecord: 16.0ms)
+
+
+Started POST "/edit_tasks" for 127.0.0.1 at 2017-05-05 01:00:08 -0300
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"UnEzvfW1tkdnU188q1zTj6LWHsVWeGi1wG1Xhi/J/EwpI99g0CPz0XQ3UwQUUqlR6WQTEXBDb6A+rr4wJZtiIQ==", "task"=>{"title"=>"Tarefa 22", "description"=>"TESTE", "id"=>"11", "spentTime"=>"7", "id_category"=>"1", "idDayWeek"=>"2"}, "commit"=>""}
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 11 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (68.3ms)[0m  [1m[33mUPDATE `tasks` SET `spentTime` = 7, `updated_at` = '2017-05-05 04:00:08' WHERE `tasks`.`id` = 11[0m
+  [1m[35m (25.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 107ms (ActiveRecord: 96.2ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-05 01:00:08 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (3.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (39.4ms)
+Completed 200 OK in 160ms (Views: 143.1ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/relatorios?id=1" for 127.0.0.1 at 2017-05-05 01:00:27 -0300
+Processing by TasksController#relatorios as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-16' AND t.updated_at <= '2017-04-22 23:59:00' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-16' AND updated_at <= '2017-04-22'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-23 23:59:00' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-23' AND t.updated_at <= '2017-04-29 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-23' AND updated_at <= '2017-04-29'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-04-30 23:59:00' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-04-30' AND t.updated_at <= '2017-05-06 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-04-30' AND updated_at <= '2017-05-06'[0m
+  Rendering tasks/relatorios.html.erb within layouts/application
+  Rendered tasks/relatorios.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 185ms (Views: 149.6ms | ActiveRecord: 9.2ms)
+
+
