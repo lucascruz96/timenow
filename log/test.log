@@ -1193,3 +1193,556 @@ Processing by TasksController#create as HTML
   Rendered tasks/new.html.erb within layouts/application (8.8ms)
 Completed 200 OK in 308ms (Views: 278.8ms | ActiveRecord: 3.8ms)
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (8.0ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 298486374)[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:11:53', '2017-05-05 17:11:53', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:11:53', '2017-05-05 17:11:53', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 964309734)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:11:53', '2017-05-05 17:11:53', 127326141)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:11:53', '2017-05-05 17:11:53')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (17.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:11:53', '2017-05-05 17:11:53', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (3.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+TasksControllerTest: test_calc_proporcao
+----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (1.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 31111ms (Views: 31044.0ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:12:24', '2017-05-05 17:12:24')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309770
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+  [1m[35m (3.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (19.0ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (4.5ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 980190962)[0m
+  [1m[36mFixture Insert (2.8ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 298486374)[0m
+  [1m[36mFixture Delete (3.1ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 298486374)[0m
+  [1m[36mFixture Delete (2.1ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:12:41', '2017-05-05 17:12:41', 980190962)[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:12:41', '2017-05-05 17:12:41', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 964309734)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:12:41', '2017-05-05 17:12:41', 127326141)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:12:41', '2017-05-05 17:12:41', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:12:41', '2017-05-05 17:12:41')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309771
+Completed 302 Found in 39ms (ActiveRecord: 6.5ms)
+  [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+TasksControllerTest: test_calc_proporcao
+----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (4.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (6.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 306ms (Views: 283.6ms | ActiveRecord: 10.5ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:12:41', '2017-05-05 17:12:41')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (33.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (24.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (9.2ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 298486374)[0m
+  [1m[36mFixture Delete (9.1ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:16:56', '2017-05-05 17:16:56', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:16:56', '2017-05-05 17:16:56', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 964309734)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:16:56', '2017-05-05 17:16:56', 127326141)[0m
+  [1m[35m (41.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+TasksControllerTest: test_calc_proporcao
+----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 305ms (Views: 274.2ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:16:57', '2017-05-05 17:16:57')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (28.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:16:57', '2017-05-05 17:16:57', 1)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (8.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (10.1ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:16:57', '2017-05-05 17:16:57')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309774
+Completed 302 Found in 41ms (ActiveRecord: 19.1ms)
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 298486374)[0m
+  [1m[36mFixture Delete (0.9ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 980190962)[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 298486374)[0m
+  [1m[36mFixture Delete (3.3ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (2.0ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:17:27', '2017-05-05 17:17:27', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:17:27', '2017-05-05 17:17:27', 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 964309734)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:17:27', '2017-05-05 17:17:27', 127326141)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:17:27', '2017-05-05 17:17:27', 1)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+TasksControllerTest: test_calc_proporcao
+----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 340ms (Views: 316.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:17:28', '2017-05-05 17:17:28')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (4.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:17:28', '2017-05-05 17:17:28')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309776
+Completed 302 Found in 9ms (ActiveRecord: 5.0ms)
+  [1m[35m (3.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (8.9ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (1.4ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:25:45', '2017-05-05 17:25:45', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:25:45', '2017-05-05 17:25:45', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 964309734)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:25:45', '2017-05-05 17:25:45', 127326141)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (3.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:25:45', '2017-05-05 17:25:45', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (2.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:25:45', '2017-05-05 17:25:45')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309777
+Completed 302 Found in 66ms (ActiveRecord: 9.7ms)
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+TasksControllerTest: test_calc_proporcao
+----------------------------------------
+  [1m[35m (3.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (6.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (3.6ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 331ms (Views: 311.1ms | ActiveRecord: 10.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:25:46', '2017-05-05 17:25:46')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (2.3ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (1.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 980190962)[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 980190962)[0m
+  [1m[36mFixture Insert (2.3ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 298486374)[0m
+  [1m[36mFixture Delete (8.7ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:28:49', '2017-05-05 17:28:49', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:28:49', '2017-05-05 17:28:49', 298486374)[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 964309734)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:28:49', '2017-05-05 17:28:49', 127326141)[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+TasksControllerTest: test_calc_proporcao_false
+----------------------------------------------
+  [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+TasksControllerTest: test_calc_proporcao_true
+---------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (2.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 1123ms (Views: 1027.9ms | ActiveRecord: 2.6ms)
+  [1m[35m (4.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:28:51', '2017-05-05 17:28:51', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (23.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:28:51', '2017-05-05 17:28:51')[0m
+  [1m[35m (6.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (6.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (4.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:28:51', '2017-05-05 17:28:51')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309780
+Completed 302 Found in 52ms (ActiveRecord: 12.3ms)
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (20.5ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (2.4ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 298486374)[0m
+  [1m[36mFixture Delete (5.1ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 298486374)[0m
+  [1m[36mFixture Delete (3.3ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:30:23', '2017-05-05 17:30:23', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:30:23', '2017-05-05 17:30:23', 298486374)[0m
+  [1m[36mFixture Delete (6.4ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (5.0ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 964309734)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:30:23', '2017-05-05 17:30:23', 127326141)[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:30:23', '2017-05-05 17:30:23', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (10.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:30:23', '2017-05-05 17:30:23')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309781
+Completed 302 Found in 47ms (ActiveRecord: 1.0ms)
+  [1m[35m (174.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:30:23', '2017-05-05 17:30:23')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (71.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+TasksControllerTest: test_calc_proporcao_true
+---------------------------------------------
+  [1m[35m (4.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+TasksControllerTest: test_calc_proporcao_false
+----------------------------------------------
+  [1m[35m (7.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (1.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (13.7ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 674ms (Views: 640.4ms | ActiveRecord: 15.2ms)
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Estudos', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Lazer', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 298486374)[0m
+  [1m[36mFixture Delete (2.0ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Segunda-Feira', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 980190962)[0m
+  [1m[36mFixture Insert (1.3ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('Terça-Feira', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 298486374)[0m
+  [1m[36mFixture Delete (4.2ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (2.0ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 5, NULL, 1, 1, 2, '2017-05-05 17:30:56', '2017-05-05 17:30:56', 980190962)[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `idDayWeek`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 5, NULL, 1, 1, 1, '2017-05-05 17:30:56', '2017-05-05 17:30:56', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 964309734)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 17:30:56', '2017-05-05 17:30:56', 127326141)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 17:30:56', '2017-05-05 17:30:56')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309783
+Completed 302 Found in 84ms (ActiveRecord: 2.1ms)
+  [1m[35m (2.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 17:30:56', '2017-05-05 17:30:56')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (2.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------
+TasksControllerTest: test_calc_proporcao_false
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+TasksControllerTest: test_calc_proporcao_true
+---------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (6.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 633ms (Views: 586.2ms | ActiveRecord: 7.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (1.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `id_category`, `id_user`, `created_at`, `updated_at`, `idDayWeek`) VALUES ('Trabalho KDD', 'Trabalho a ser realizado para a disciplina de KDD', 6800, 1, 1, '2017-05-05 17:30:57', '2017-05-05 17:30:57', 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTask Load (3.5ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`title` = 'Trabalho KDD' LIMIT 1[0m
+  [1m[35m (3.5ms)[0m  [1m[31mROLLBACK[0m
