@@ -3,15 +3,17 @@
 one:
   title: Trabalho Gerencia de Projetos
   description: Trabalho a ser realizado para a disciplina de Gerencia de Projetos
-  spentTime: 9000
+  spentTime: 5
   endDate:
   id_category: 1
   id_user: 1
+  idDayWeek: 2
 
 two:
   title: Trabalho Projeto de Sistemas de Informação
   description: Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação
-  spentTime: 6500
+  spentTime: 5
   endDate:
   id_category: 1
   id_user: 1
+  idDayWeek: 1
