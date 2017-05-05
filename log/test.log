@@ -148,3 +148,88 @@ UserTest: test_new_user
   [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
   [1m[35m (3.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `timenow_test`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `timenow_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (249.2ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (38.5ms)[0m  [1m[35mCREATE TABLE `tasks` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `description` varchar(255), `spentTime` int, `endDate` datetime, `id_category` int, `id_user` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `idDayWeek` int) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `job` varchar(255), `password` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE `weeks` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20170429060827)[0m
+  [1m[35m (11.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20170429030439),
+(20170404003149),
+(20170404001452),
+(20170429060801),
+(20170404001356);
+
+[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'test', '2017-05-05 11:36:03', '2017-05-05 11:36:03')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (2.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (6.9ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM `weeks`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 980190962)[0m
+  [1m[36mFixture Insert (6.4ms)[0m  [1m[32mINSERT INTO `weeks` (`name`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `tasks`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Gerencia de Projetos', 'Trabalho a ser realizado para a disciplina de Gerencia de Projetos', 9000, NULL, 1, 1, '2017-05-05 11:36:03', '2017-05-05 11:36:03', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `tasks` (`title`, `description`, `spentTime`, `endDate`, `id_category`, `id_user`, `created_at`, `updated_at`, `id`) VALUES ('Trabalho Projeto de Sistemas de Informação', 'Trabalho a ser realizado pela disciplina de Projeto de Sistemas de Informação', 6500, NULL, 1, 1, '2017-05-05 11:36:03', '2017-05-05 11:36:03', 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('Lucas da Cruz', 'lucas@hotmail.com', 'programador', '1234', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 964309734)[0m
+  [1m[36mFixture Insert (2.6ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`, `id`) VALUES ('David Fernandes', 'david@gmail.com', 'programador', '1234', '2017-05-05 11:36:03', '2017-05-05 11:36:03', 127326141)[0m
+  [1m[35m (97.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+TaskTest: test_new_task
+-----------------------
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+TasksControllerTest: test_new_task
+----------------------------------
+Processing by TasksController#create as HTML
+  Parameters: {"task"=>{"description"=>"Realização de testes automaticos", "id_category"=>"1", "spentTime"=>"0", "title"=>"Tarefas de testes"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 783ms (Views: 777.1ms | ActiveRecord: 2.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+-----------------------
+UserTest: test_new_user
+-----------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Vinicius', 'vinicius@hotmail.com', 'programador', '1234', '2017-05-05 11:36:04', '2017-05-05 11:36:04')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'vinicius@hotmail.com' LIMIT 1[0m
+  [1m[35m (3.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+UsersControllerTest: test_new_user
+----------------------------------
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"rafael@hotmail.com", "job"=>"Analista de Redes", "name"=>"Rafael", "password"=>"[FILTERED]"}}
+  [1m[35m (8.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'rafael@hotmail.com' LIMIT 1[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `job`, `password`, `created_at`, `updated_at`) VALUES ('Rafael', 'rafael@hotmail.com', 'Analista de Redes', '1234', '2017-05-05 11:36:04', '2017-05-05 11:36:04')[0m
+  [1m[35m (2.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/dashboard?id=964309736
+Completed 302 Found in 21ms (ActiveRecord: 13.8ms)
+  [1m[35m (1.9ms)[0m  [1m[31mROLLBACK[0m

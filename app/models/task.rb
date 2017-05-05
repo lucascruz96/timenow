@@ -10,4 +10,8 @@ class Task < ApplicationRecord
 	validates :id_category, presence: true
 
 	validates :id_user, presence: true
+
+	validates :id_category, presence: true
+
+	validates :idDayWeek, presence: true
 end
