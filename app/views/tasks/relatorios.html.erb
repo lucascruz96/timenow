@@ -6,9 +6,9 @@
 			</div>
 
 	    	<div class="sidebar-wrapper">
-	            <ul class="nav">
-	                <li class="">	                
-	                <%= link_to dashboard_url(:id => session[:user_id]) do %>
+	           <ul class="nav">
+	                <li class="">
+	                 <%= link_to dashboard_url(:id => session[:user_id]) do %>
 					<%= content_tag :i, "dashboard", :class => "material-icons" %>
 					<%= content_tag :p, "Dashboard", :class => "" %>
 					<% end %>
@@ -19,11 +19,17 @@
 	                        <p>Cadastro de Tarefas</p>
 	                    </a>
 	                </li>
+	              	<li class="">
+					<%= link_to semanaAtual_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "trending_up", :class => "material-icons" %>
+					<%= content_tag :p, "Semana Atual", :class => "" %>
+					<% end %>
+	                </li>	                
 	                <li class="active">
-	                    <a href="http://localhost:3000/relatorios">
-	                        <i class="material-icons">pie_chart</i>
-	                        <p>Relatórios</p>
-	                    </a>
+	                <%= link_to relatorios_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "pie_chart", :class => "material-icons" %>
+					<%= content_tag :p, "Histórico", :class => "" %>
+					<% end %>
 	                </li>
 	            </ul>
 	    	</div>
@@ -33,7 +39,7 @@
 	    
 	        <div class="content">
 	            <div class="container-fluid">
-	            <h3 class="title-relatorios">Histórico</h3>
+	            <h3 class="title-relatorios">Historico</h3>
 
 	            <div class="col-md-4 historico-semana-atual">
 	            <h5 class="subTitle-relatorios">Semana Atual</h5>
@@ -49,22 +55,22 @@
 				  <table id="table" class="table table-mc-light-blue table-historico">
 				      <thead>
 				        <tr>
-				          <th><b>Nome da Tarefa</b></th>
-				          <th><b>Tempo Gasto</b></th>
-				          <th><b>Proporção</b></th>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
 				        </tr>
 				      </thead>
 				      <tbody>
 				  		<% @week1Tasks.each do |week1| -%>
 				        <tr>
 				          <td>
-							  [GET]
+							  <%= week1.qnt %>
 						  </td>
 				          <td>
 							  <%= week1.hours %>
 						  </td>
 				          <td>
-							  [GET]
+							  <%= week1.day %>
 						  </td>
 				        </tr>
 				        <%end%>
@@ -91,7 +97,7 @@
 	            </div>
 
 	          	<div class="col-md-4 historico-ultima-semana">
-	          		            <h5 class="subTitle-relatorios">Última Semana</h5>
+	          	<h5 class="subTitle-relatorios">Última Semana</h5>
 	            <p class="text-relatorios">Total de horas investidas nesta semana: <b>
 	            <% @totalWeek2.each do |tw2| -%>
 	            <%= tw2.total %>
@@ -104,22 +110,22 @@
 				  <table id="table" class="table table-mc-light-blue table-historico">
 				      <thead>
 				        <tr>
-				          <th><b>Nome da Tarefa</b></th>
-				          <th><b>Tempo Gasto</b></th>
-				          <th><b>Proporção</b></th>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
 				        </tr>
 				      </thead>
 				      <tbody>
 				        <% @week2Tasks.each do |week2| -%>
 				        <tr>
 				          <td>
-							  [GET]
+							  <%= week2.qnt %>
 						  </td>
 				          <td>
 							  <%= week2.hours %>
 						  </td>
 				          <td>
-							  [GET]
+							  <%= week2.day %>
 						  </td>
 				        </tr>
 				        <%end%>
@@ -159,22 +165,22 @@
 				  <table id="table" class="table table-mc-light-blue table-historico">
 				      <thead>
 				        <tr>
-				          <th><b>Nome da Tarefa</b></th>
-				          <th><b>Tempo Gasto</b></th>
-				          <th><b>Proporção</b></th>
+				          <th><b>Tarefas</b></th>
+				          <th><b>Horas</b></th>
+				          <th><b>Dia da Semana</b></th>
 				        </tr>
 				      </thead>
 				      <tbody>
 				        <% @week3Tasks.each do |week3| -%>
 				        <tr>
 				          <td>
-							  [GET]
+							  <%= week3.qnt %>
 						  </td>
 				          <td>
 							  <%= week3.hours %>
 						  </td>
 				          <td>
-							  [GET]
+							  <%= week3.day %>
 						  </td>
 				        </tr>
 				        <%end%>

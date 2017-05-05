@@ -26,6 +26,17 @@ class TasksController < ApplicationController
       @tasks = Task.find_by_sql(@comando_sql)
     end
 
+    def semanaAtual
+    	@dia1 = Date.today - ((0 - Time.now.wday) * -1)
+        @dia2 = @dia1 + 6
+
+        @comando_sql = "SELECT SUM(spentTime) as total FROM tasks WHERE id_user = #{params[:id]} AND updated_at >= '"+ @dia1.strftime("%Y-%m-%d") +" 23:59:00' AND updated_at <= '"+ @dia2.strftime("%Y-%m-%d") +"'"
+        @totalWeek1 = Task.find_by_sql(@comando_sql)
+
+        @comando_sql = "SELECT title, spentTime FROM tasks WHERE id_user = #{params[:id]} ORDER BY updated_at"
+        @tasks = Task.find_by_sql(@comando_sql)
+    end
+
     def relatorios
         @dia1 = Date.today - ((0 - Time.now.wday - 14) * -1)
         @dia2 = @dia1 + 6
@@ -95,7 +106,11 @@ class TasksController < ApplicationController
 
         @sundayTasks = Task.find_by_sql(@comando_sql)
     end
-    helper_method :week_tasks
+
+    def calc_proporcao(total, tarefa)
+    	@prop = (tarefa * 100) / total
+    end
+    helper_method :week_tasks, :calc_proporcao
 
     private
     def task_params

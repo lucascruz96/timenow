@@ -1,0 +1,170 @@
+<div class="wrapper">
+	    <div class="sidebar" data-color="purple" data-image="../assets/images/sidebar-1.jpg">
+
+			<div class="logo" align="center">
+				<img src="/assets/logo.png" alt="Logo Principal" height="43" class="logo-principal"/>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	                <li class="">
+	                 <%= link_to dashboard_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "dashboard", :class => "material-icons" %>
+					<%= content_tag :p, "Dashboard", :class => "" %>
+					<% end %>
+	                </li>
+	                <li class="">
+	                    <a href="http://localhost:3000/cadastroTarefas">
+	                        <i class="material-icons">alarm</i>
+	                        <p>Cadastro de Tarefas</p>
+	                    </a>
+	                </li>
+	              	<li class="active">
+					<%= link_to semanaAtual_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "trending_up", :class => "material-icons" %>
+					<%= content_tag :p, "Semana Atual", :class => "" %>
+					<% end %>
+	                </li>	                
+	                <li class="">
+	                <%= link_to relatorios_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "pie_chart", :class => "material-icons" %>
+					<%= content_tag :p, "Histórico", :class => "" %>
+					<% end %>
+	                </li>
+	            </ul>
+	    	</div>
+		</div>
+
+
+	    <div class="main-panel">
+	    
+	        <div class="content">
+	            <div class="container-fluid">
+
+	            <div class="col-md-12 dashboard" align="center">
+	            <h4 class="title-dashboard">Semana Atual</h4>
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-dashboard">
+				      <thead>
+				        <tr>
+				          <th>Domingo</th>
+				          <th>Segunda-Feira</th>
+				          <th>Terça-Feira</th>
+				          <th>Quarta-Feira</th>
+				          <th>Quinta-Feira</th>
+				          <th>Sexta-Feira</th>
+				          <th>Sábado</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				        <tr class="tr-tasks"> 
+				          <td>
+				          	<% week_tasks(1).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>					
+				          </td>
+				          <td>
+				          	<% week_tasks(2).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>
+				          <td>
+				          	<% week_tasks(3).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>
+				          <td>
+				          	<% week_tasks(4).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(5).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(6).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>			
+				          </td>
+				          <td>
+				          	<% week_tasks(7).each do |day_of_week| -%>
+								<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %>
+								</button>
+							<%end%>		
+				          </td>				                  
+				        </tr>
+				      </tbody>
+				    </table>
+				  </div>
+  
+	            </div>
+
+	           	<div class="col-md-5 panel semana-atual"> 	           	 
+	            <h5 class="subTitle-semana-atual">Ranking das atividades</h5>
+	            <p class="text-relatorios">Total de horas: <b>
+	            <% @totalWeek1.each do |tw1| -%>
+	            <%= tw1.total %>
+	            <%end%>	
+	            </b> horas.</p>
+
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-historico">
+				      <thead>
+				        <tr>
+				          <th><b>Nome da Tarefa</b></th>
+				          <th><b>Tempo Gasto</b></th>
+				          <th><b>Proporção</b></th>
+				        </tr>
+				      </thead>
+				      <tbody>				  		
+				        <% @tasks.each do |task| %>
+				        <tr>
+				          <td>
+							  <%= task.title %>
+						  </td>
+				          <td>
+							  <%= task.spentTime %> hrs
+						  </td>
+				          <td>
+							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+						  </td>
+				        </tr>
+				        <%end%>
+				      </tbody>
+				    </table>
+				  </div>
+  				</div>               
+      
+
+	            </div>
+	        </div>
+			<footer class="footer rodape-principal">
+	            <div class="container-fluid">	                
+	                <p class="copyright pull-right">
+	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Time Now</a>, Eu No Controle do Meu Tempo
+	                </p>
+	            </div>
+	        </footer>
+	    </div>
+	</div>
+<style type="text/css">
+.list-group .list-group-item.active{
+	text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+}
+</style>

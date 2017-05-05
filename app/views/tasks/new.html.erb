@@ -19,10 +19,16 @@
 						<%= content_tag :p, "Cadastro de Tarefas", :class => "" %>
 					  <% end %>	              
 	                </li>
+	               	<li class="">
+	                 <%= link_to semanaAtual_url(:id => session[:user_id]) do %>
+					<%= content_tag :i, "trending_up", :class => "material-icons" %>
+					<%= content_tag :p, "Semana Atual", :class => "" %>
+					<% end %>
+	                </li>	                
 	                <li class="">
 	                  <%= link_to relatorios_url(:id => session[:user_id]) do %>
 						<%= content_tag :i, "pie_chart", :class => "material-icons" %>
-						<%= content_tag :p, "Relatórios", :class => "" %>
+						<%= content_tag :p, "Histórico", :class => "" %>
 					  <% end %>
 	                </li>
 	            </ul>
