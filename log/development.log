@@ -8368,3 +8368,43 @@ Processing by TasksController#dashboard as HTML
 Completed 200 OK in 818ms (Views: 770.3ms | ActiveRecord: 37.9ms)
 
 
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 01:09:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (65.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (27.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (90.0ms)
+Completed 200 OK in 1844ms (Views: 1744.8ms | ActiveRecord: 44.6ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 01:10:01 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (39.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (100.3ms)
+Completed 200 OK in 366ms (Views: 313.8ms | ActiveRecord: 50.2ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 01:10:08 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 205ms (Views: 204.1ms | ActiveRecord: 0.0ms)
+
+
