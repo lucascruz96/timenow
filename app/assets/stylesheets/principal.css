@@ -283,7 +283,14 @@ input:focus ~ .highlight {
     padding-left: 7px;
     padding-right: 7px;
     box-shadow: 0px 0px 1em #d5d5d5;
-    margin-left: 10px;
+    margin-left: 70px;
+}
+
+.tarefas-selecionadas{
+    padding-left: 7px;
+    padding-right: 7px;
+    box-shadow: 0px 0px 1em #d5d5d5;
+    margin-left: 20px;
 }
 
 .editar-tarefas{
@@ -310,7 +317,7 @@ input:focus ~ .highlight {
 }
 
 .table-dashboard th, td, tr{
-  width: 142px;  
+  width: 180px;  
   border: 1px solid #b3b2b2;
   text-align: center;
 }
@@ -630,4 +637,8 @@ div .mdl-textfield__label {
   
 #task_title{
   text-align: center;
+}
+
+.label-button{
+  min-height: 43px;
 }

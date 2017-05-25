@@ -47,7 +47,7 @@
 				  <table id="table" class="table table-mc-light-blue table-dashboard">
 				      <thead>
 				        <tr>
-				          <th>Domingo</th>
+				          <th>Domingo </th>
 				          <th>Segunda-Feira</th>
 				          <th>Terça-Feira</th>
 				          <th>Quarta-Feira</th>
@@ -60,51 +60,72 @@
 				        <tr class="tr-tasks"> 
 				          <td>
 				          	<% week_tasks(1).each do |day_of_week| -%>
-								<button class="mdl-button mdl-js-button list-task-dashboard">
-							  		<%= day_of_week.title %>
-								</button>
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+									<input type="checkbox" class="mdl-checkbox__input">
+									<button class="mdl-button mdl-js-button list-task-dashboard">
+							  		<%= day_of_week.title %> 
+									</button>									
+								</label>
 							<%end%>					
 				          </td>
 				          <td>
 				          	<% week_tasks(2).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>		
 				          </td>
 				          <td>
 				          	<% week_tasks(3).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>		
 				          </td>
 				          <td>
 				          	<% week_tasks(4).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>			
 				          </td>
 				          <td>
 				          	<% week_tasks(5).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>			
 				          </td>
 				          <td>
 				          	<% week_tasks(6).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>			
 				          </td>
 				          <td>
 				          	<% week_tasks(7).each do |day_of_week| -%>
+				          	<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+								<input type="checkbox" class="mdl-checkbox__input">
 								<button class="mdl-button mdl-js-button list-task-dashboard">
 							  		<%= day_of_week.title %>
 								</button>
+							</label>
 							<%end%>		
 				          </td>				                  
 				        </tr>
@@ -140,15 +161,47 @@
 				          <td>
 							  <%= task.spentTime %> hrs
 						  </td>
-				          <td>
-							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+				        <td>
+						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
 						  </td>
 				        </tr>
 				        <%end%>
 				      </tbody>
 				    </table>
 				  </div>
-  				</div>               
+  				</div> 
+
+  				<div class="col-md-5 panel tarefas-selecionadas"> 	           	 
+	            <h5 class="subTitle-semana-atual">Relação de Tarefas Selecionadas</h5>
+	            <table class="cadastro-atividade">
+	            <tr>
+				<td width="100px"><label class="titleLabels text-relatorios">Selecionar todas as tarefas: </label></td> 
+			 	<td><label class="mdl-switch mdl-js-switch mdl-js-ripple-effect titleLabels" for="switch-1">
+			 	<input type="checkbox" id="switch-1" class="mdl-switch__input"> 
+			 	</label></td>
+			 	</tr>
+	            </table><br>
+	            <div class="table-responsive-vertical shadow-z-1">				  
+				  <table id="table" class="table table-mc-light-blue table-historico">
+				      <thead>
+				        <tr>
+				          <th><b>Nome da Tarefa</b></th>
+				          <th><b>Tempo Gasto</b></th>				          
+				        </tr>
+				      </thead>
+				      <tbody>			       
+				        <tr>
+				          <td>
+							  [GET]
+						  </td>
+				          <td>
+							  [GET]
+						  </td>				          
+				        </tr>
+				      </tbody>
+				    </table>
+				  </div>
+  				</div>                     
       
 
 	            </div>

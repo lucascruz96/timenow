@@ -6725,3 +6725,1646 @@ Processing by TasksController#semanaAtual as HTML
 Completed 200 OK in 182ms (Views: 104.1ms | ActiveRecord: 5.7ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-05-21 18:40:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (5.7ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (32299.8ms)
+Completed 200 OK in 33078ms (Views: 32941.6ms | ActiveRecord: 51.6ms)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2017-05-21 18:40:49 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ce5LSiYcvKo0rJjb2P1Zrem26xPWpv8RcJFOge9snmOfDguAtgAINazxUDH6KAw34D4Sx3FeJG+sMZzUFzHBDg==", "session"=>{"email"=>"david@hotmail.com", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL LIMIT 1[0m
+  [1m[36mUser Load (32.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'david@hotmail.com' AND `users`.`password` = '1234' LIMIT 1[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 202ms (ActiveRecord: 127.9ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-21 18:40:49 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (42.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (5.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (36.9ms)
+Completed 200 OK in 372ms (Views: 133.9ms | ActiveRecord: 60.6ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-21 18:40:59 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 177ms (Views: 123.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-21 18:41:01 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (58.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (29.5ms)
+Completed 200 OK in 198ms (Views: 107.8ms | ActiveRecord: 69.5ms)
+
+
+Started GET "/relatorios?id=1" for 127.0.0.1 at 2017-05-21 18:41:04 -0300
+Processing by TasksController#relatorios as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (76.4ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-07' AND t.updated_at <= '2017-05-13 23:59:00' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-14 23:59:00' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-14' AND t.updated_at <= '2017-05-20 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (3.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-21' AND t.updated_at <= '2017-05-27 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  Rendering tasks/relatorios.html.erb within layouts/application
+  Rendered tasks/relatorios.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 213ms (Views: 97.2ms | ActiveRecord: 89.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-21 18:41:06 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 143ms (Views: 130.7ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/relatorios?id=1" for 127.0.0.1 at 2017-05-21 18:41:59 -0300
+Processing by TasksController#relatorios as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (5.8ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-07' AND t.updated_at <= '2017-05-13 23:59:00' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-07' AND updated_at <= '2017-05-13'[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-14 23:59:00' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (3.5ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-14' AND t.updated_at <= '2017-05-20 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-14' AND updated_at <= '2017-05-20'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT COUNT(t.id) as qnt, SUM(spentTime) as hours, name as day FROM tasks t, weeks w WHERE t.idDayWeek = w.id AND id_user = 1 AND t.updated_at >= '2017-05-21' AND t.updated_at <= '2017-05-27 23:59:59' GROUP BY idDayWeek[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 1 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 2 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND id_category = 3 AND updated_at >= '2017-05-21' AND updated_at <= '2017-05-27'[0m
+  Rendering tasks/relatorios.html.erb within layouts/application
+  Rendered tasks/relatorios.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 186ms (Views: 145.5ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-21 18:42:07 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (3.0ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (34.3ms)
+Completed 200 OK in 156ms (Views: 134.3ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-21 18:42:17 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (3.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (38.2ms)
+Completed 200 OK in 174ms (Views: 159.1ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-21 18:42:37 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 115ms (Views: 113.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-21 18:43:01 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 156ms (Views: 137.8ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-24 23:40:02 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (6.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (13.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (6.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (114.9ms)
+Completed 200 OK in 1843ms (Views: 1727.2ms | ActiveRecord: 31.8ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:47:54 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (75.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 343ms (Views: 247.6ms | ActiveRecord: 87.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:50:18 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 241ms (Views: 220.2ms | ActiveRecord: 14.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-24 23:52:21 -0300
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (19.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Filter chain halted as :block_access rendered or redirected
+Completed 302 Found in 209ms (ActiveRecord: 66.4ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-24 23:52:22 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (6.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 165ms (Views: 141.8ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:52:26 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.6ms)
+Completed 200 OK in 222ms (Views: 208.9ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:52:54 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (6.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 195ms (Views: 174.8ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:53:30 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (10.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (35.3ms)
+Completed 200 OK in 167ms (Views: 140.3ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:54:16 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.2ms)
+Completed 200 OK in 168ms (Views: 145.6ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:55:22 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (3.2ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (38.8ms)
+Completed 200 OK in 163ms (Views: 145.6ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:56:41 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (7.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (50.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (85.0ms)
+Completed 200 OK in 225ms (Views: 154.0ms | ActiveRecord: 68.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-24 23:58:30 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 137ms (Views: 127.3ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:00:01 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 201ms (Views: 186.4ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 00:02:55 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 5380ms (Views: 5351.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:03:10 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 207ms (Views: 191.1ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:03:21 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (36.8ms)
+Completed 200 OK in 209ms (Views: 184.2ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:04:53 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 179ms (Views: 162.4ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:05:18 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 174ms (Views: 158.5ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:06:53 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 4369ms (Views: 4352.6ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:07:53 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 4380ms (Views: 4370.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:13:32 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (124.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (22.8ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (34.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (122.7ms)
+Completed 200 OK in 640ms (Views: 407.8ms | ActiveRecord: 189.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:14:06 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 131ms (Views: 118.8ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:14:23 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (6.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (39.9ms)
+Completed 200 OK in 521ms (Views: 111.2ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:14:37 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (21.1ms)
+Completed 200 OK in 135ms (Views: 121.2ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:15:37 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (9.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 149ms (Views: 126.9ms | ActiveRecord: 20.1ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:17:39 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 165ms (Views: 147.7ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:20:44 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 181ms (Views: 164.5ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:21:19 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (5.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (6.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 127ms (Views: 109.9ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:22:55 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 4210ms (Views: 4201.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:25:29 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (5.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (5.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 4518ms (Views: 4502.3ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:27:11 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 131ms (Views: 117.4ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:27:31 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (34.2ms)
+Completed 200 OK in 149ms (Views: 109.4ms | ActiveRecord: 10.7ms)
+
+
+Started POST "/edit_tasks" for 127.0.0.1 at 2017-05-25 00:27:41 -0300
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"XMpqIrVLF/ZqE410RIO9Xve8qMtlPHp3lJaTPPyJ2rmyKiroJVejafJORZ5mVujE/jRRH8LEoQlINkFpBNSF1A==", "task"=>{"title"=>"Tarefa 22", "description"=>"TESTE", "id"=>"11", "spentTime"=>"", "id_category"=>"1", "idDayWeek"=>"7"}, "commit"=>""}
+  [1m[36mTask Load (25.4ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 11 LIMIT 1[0m
+  [1m[35m (17.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (229.0ms)[0m  [1m[33mUPDATE `tasks` SET `spentTime` = NULL, `idDayWeek` = 7, `updated_at` = '2017-05-25 03:27:41' WHERE `tasks`.`id` = 11[0m
+  [1m[35m (116.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 559ms (ActiveRecord: 388.0ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:27:41 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (5.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (10.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 153ms (Views: 130.0ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:27:44 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (76.2ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 10.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				          <td>
+    165: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269407925100'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269407925100'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.7ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (92.4ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:28:01 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (24.5ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 10.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				          <td>
+    165: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269409262740'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269409262740'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (27.7ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.7ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:28:33 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (5.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.2ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 16.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    144: 							  <%= task.spentTime %> hrs
+    145: 						  </td>
+    146: 				          <td>
+    147: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    148: 						  </td>
+    149: 				        </tr>
+    150: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:147:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269405443540'
+app/views/tasks/semanaAtual.html.erb:138:in `each'
+app/views/tasks/semanaAtual.html.erb:138:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269405443540'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (17.4ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (82.7ms)
+Started GET "/semanaAtual" for 127.0.0.1 at 2017-05-25 00:29:16 -0300
+Processing by TasksController#semanaAtual as HTML
+  [1m[36mTask Load (132.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user =  AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+Completed 500 Internal Server Error in 134ms (ActiveRecord: 132.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'' at line 1: SELECT SUM(spentTime) as total FROM tasks WHERE id_user =  AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'):
+  
+app/controllers/tasks_controller.rb:34:in `semanaAtual'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (19.1ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.8ms)
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 00:29:24 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 114ms (Views: 104.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:29:26 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (30.8ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 6.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				          <td>
+    165: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269392591880'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269392591880'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.8ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (75.3ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:30:26 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (26.7ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 9.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						 <!-- 	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % -->
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269401284020'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269401284020'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (17.8ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.4ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:30:29 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.8ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 11.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						 <!-- 	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % -->
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269394136560'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269394136560'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.8ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (85.0ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:31:15 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (27.1ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 11.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_45419160'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_45419160'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.3ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (77.3ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:31:19 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (9.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.5ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 16.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269421308960'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269421308960'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (14.2ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.4ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.6ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:34:21 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (6.8ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  Rendered tasks/semanaAtual.html.erb within layouts/application (404.1ms)
+Completed 500 Internal Server Error in 480ms (ActiveRecord: 7.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `week_tasks' for #<#<Class:0x007fd1be33f328>:0x007fd1be33deb0>
+Did you mean?  week_field_tag):
+    59: 				      <tbody>
+    60: 				        <tr class="tr-tasks"> 
+    61: 				          <td>
+    62: 				          	<% week_tasks(1).each do |day_of_week| -%>
+    63: 								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect label-button">
+    64: 									<input type="checkbox" class="mdl-checkbox__input">
+    65: 									<button class="mdl-button mdl-js-button list-task-dashboard">
+  
+app/views/tasks/semanaAtual.html.erb:62:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269407985120'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (18.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.5ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (92.2ms)
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:34:49 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 205ms (Views: 146.8ms | ActiveRecord: 12.4ms)
+
+
+Started POST "/edit_tasks" for 127.0.0.1 at 2017-05-25 00:34:56 -0300
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"l6IsfbINSJmFQBy+hdQFEGupOLSTiD7vddePxvk3f5F5Qmy3IhH8Bh0d1FSnAVCKYiHBYDRw5ZGpd12TAWog/A==", "task"=>{"title"=>"Tarefa 22", "description"=>"TESTE", "id"=>"11", "spentTime"=>"", "id_category"=>"1", "idDayWeek"=>"1"}, "commit"=>""}
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 11 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (42.3ms)[0m  [1m[33mUPDATE `tasks` SET `idDayWeek` = 1, `updated_at` = '2017-05-25 03:34:56' WHERE `tasks`.`id` = 11[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 60ms (ActiveRecord: 49.7ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:34:56 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (35.1ms)
+Completed 200 OK in 165ms (Views: 151.6ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:34:59 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (6.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (27.7ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 16.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	<!--  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % -->
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269395368780'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269395368780'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (16.2ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (78.3ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:35:17 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (34.0ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 14.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269290587040'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269290587040'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (18.4ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (86.4ms)
+Started GET "/s" for 127.0.0.1 at 2017-05-25 00:38:13 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/s"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered collection of /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [29 times] (72.4ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (42.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.7ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (248.9ms)
+Started GET "/" for 127.0.0.1 at 2017-05-25 00:38:17 -0300
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Filter chain halted as :block_access rendered or redirected
+Completed 302 Found in 243ms (ActiveRecord: 164.4ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:38:17 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (6.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (34.8ms)
+Completed 200 OK in 153ms (Views: 138.2ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 00:38:25 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 130ms (Views: 126.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:38:26 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (2.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (28.7ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 11.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269407013600'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269407013600'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (30.0ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (100.0ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:41:32 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (31.7ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 8.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    141: 							  <%= task.spentTime %> hrs
+    142: 						  </td>
+    143: 				          <td>
+    144: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    145: 						  </td>
+    146: 				        </tr>
+    147: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:144:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269290250340'
+app/views/tasks/semanaAtual.html.erb:135:in `each'
+app/views/tasks/semanaAtual.html.erb:135:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269290250340'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (16.3ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.1ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:41:36 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (25.3ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 6.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    141: 							  <%= task.spentTime %> hrs
+    142: 						  </td>
+    143: 				          <td>
+    144: 							  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> %
+    145: 						  </td>
+    146: 				        </tr>
+    147: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:144:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269395623780'
+app/views/tasks/semanaAtual.html.erb:135:in `each'
+app/views/tasks/semanaAtual.html.erb:135:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269395623780'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (25.7ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.5ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (97.5ms)
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:41:52 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (32.7ms)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 4.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `*' for nil:NilClass):
+    162: 							  <%= task.spentTime %> hrs
+    163: 						  </td>
+    164: 				        <td>
+    165: 						  	  <%= calc_proporcao(@totalWeek1.first.total, task.spentTime) %> % 
+    166: 						  </td>
+    167: 				        </tr>
+    168: 				        <%end%>
+  
+app/controllers/tasks_controller.rb:110:in `calc_proporcao'
+app/views/tasks/semanaAtual.html.erb:165:in `block in _app_views_tasks_semana_tual_html_erb__859242774054058685_70269403092240'
+app/views/tasks/semanaAtual.html.erb:156:in `each'
+app/views/tasks/semanaAtual.html.erb:156:in `_app_views_tasks_semana_tual_html_erb__859242774054058685_70269403092240'
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (20.5ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.9ms)
+  Rendering /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/david/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.7ms)
+Started GET "/" for 127.0.0.1 at 2017-05-25 00:44:17 -0300
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Filter chain halted as :block_access rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:44:17 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (6.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (36.4ms)
+Completed 200 OK in 146ms (Views: 130.9ms | ActiveRecord: 12.9ms)
+
+
+Started POST "/edit_tasks" for 127.0.0.1 at 2017-05-25 00:44:22 -0300
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"/uRnGfdWDbKxsa6JC6RzEzqZJw7jR1uIhtSqVU7znpwQBCfTZ0q5LSnsZmMpcSaJMxHe2kS/gPZadHgAtq7B8Q==", "task"=>{"title"=>"Tarefa 22", "description"=>"TESTE", "id"=>"11", "spentTime"=>"", "id_category"=>"1", "idDayWeek"=>"1"}}
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT  `tasks`.* FROM `tasks` WHERE `tasks`.`id` = 11 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard?id=1
+Completed 302 Found in 16ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:44:22 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (2.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (6.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (5.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (67.6ms)
+Completed 200 OK in 180ms (Views: 152.1ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:47:11 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (123.7ms)
+Completed 200 OK in 968ms (Views: 861.0ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:47:19 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (15.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (3.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 171ms (Views: 111.1ms | ActiveRecord: 30.1ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:48:55 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (3.7ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 147ms (Views: 135.8ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:50:52 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 169ms (Views: 149.7ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/semanaAtual?id=1" for 127.0.0.1 at 2017-05-25 00:51:15 -0300
+Processing by TasksController#semanaAtual as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (40.4ms)[0m  [1m[34mSELECT SUM(spentTime) as total FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27'[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT title, spentTime FROM tasks WHERE id_user = 1 AND updated_at >= '2017-05-21 23:59:00' AND updated_at <= '2017-05-27' ORDER BY updated_at[0m
+  Rendering tasks/semanaAtual.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/semanaAtual.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 407ms (Views: 359.4ms | ActiveRecord: 46.1ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 00:57:58 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (371.0ms)
+Completed 200 OK in 3515ms (Views: 3478.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 00:58:50 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (118.5ms)
+Completed 200 OK in 1089ms (Views: 1066.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 00:59:01 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (654.2ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (13.3ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (8.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (12.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (167.6ms)
+Completed 200 OK in 1540ms (Views: 764.2ms | ActiveRecord: 691.9ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 01:00:04 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (43.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (37.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (146.0ms)
+Completed 200 OK in 930ms (Views: 840.9ms | ActiveRecord: 86.7ms)
+
+
+Started GET "/cadastroTarefas" for 127.0.0.1 at 2017-05-25 01:01:02 -0300
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 291ms (Views: 290.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/dashboard?id=1" for 127.0.0.1 at 2017-05-25 01:01:30 -0300
+Processing by TasksController#dashboard as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (23.9ms)[0m  [1m[34mSELECT * FROM tasks WHERE id_user = 1 ORDER BY updated_at DESC LIMIT 8[0m
+  Rendering tasks/dashboard.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 1 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 2 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 3 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.6ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 4 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 5 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 6 ORDER BY updated_at DESC LIMIT 3[0m
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT * FROM tasks WHERE idDayWeek = 7 ORDER BY updated_at DESC LIMIT 3[0m
+  Rendered tasks/dashboard.html.erb within layouts/application (65.7ms)
+Completed 200 OK in 818ms (Views: 770.3ms | ActiveRecord: 37.9ms)
+
+
