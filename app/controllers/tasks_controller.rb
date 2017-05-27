@@ -120,7 +120,7 @@ class TasksController < ApplicationController
     def week_tasks(dia)
         @dia1_semana = primeiro_dia_semana()
 
-        @comando_sql = "SELECT * FROM tasks WHERE idDayWeek = #{dia} AND date >='"+ @dia1_semana.strftime("%Y-%m-%d") +"' AND date <='"+ (@dia1_semana + 6).strftime("%Y-%m-%d") +" 23:59:59' ORDER BY date DESC LIMIT 3"
+        @comando_sql = "SELECT * FROM tasks WHERE idDayWeek = #{dia} AND date >='"+ @dia1_semana.strftime("%Y-%m-%d") +"' AND date <='"+ (@dia1_semana + 6).strftime("%Y-%m-%d") +" 23:59:59'  AND id_user = #{params[:id]} ORDER BY date DESC LIMIT 3"
 
         @sundayTasks = Task.find_by_sql(@comando_sql)
     end
