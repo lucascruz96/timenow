@@ -68,16 +68,13 @@ function formatarData(data)
 
 function liberarEdicao(id, title, description, category, spentTime, created, date, done)
 {
-  console.log(done);
   document.getElementById("task_id").value = id;
   document.getElementById("task_title").value = title;
   document.getElementById("task_description").value = description;
-  document.getElementById("txtspentTime").innerHTML = spentTime + " hrs";
+  document.getElementById("txtSpentTime").innerHTML = spentTime + " hrs";
   document.getElementById("task_category").value = category;
   document.getElementById("dataCriacao").innerHTML = formatarData(created);
   document.getElementById("dataExecucao").innerHTML = formatarData(date);
-  //document.getElementById("switch-1").checked;
-  //$("#switch-1").attr("checked", "checked");
 }
 
 function recarregar()

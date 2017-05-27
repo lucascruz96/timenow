@@ -67,7 +67,7 @@
 				          </td>
 				          <td>
 				          	<% week_tasks(2).each do |day_of_week| -%>
-								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.date %>')">
+								<button class="mdl-button mdl-js-button list-task-dashboard" onclick="liberarEdicao('<%= day_of_week.id %>', '<%= day_of_week.title %>', '<%= day_of_week.description %>', '<%= day_of_week.id_category %>', '<%= day_of_week.spentTime %>', '<%= day_of_week.created_at %>', '<%= day_of_week.date %>', '<%= day_of_week.done %>')">
 							  		<%= day_of_week.title %>
 								</button>
 							<%end%>		
@@ -176,7 +176,7 @@
 							 <tr>
 							 <td><label class="titleLabels">Tempo Gasto: </label></td>
 							 <td><div class="mui-textfield mui-textfield--float-label">				  
-	   						  <label class="titleLabels1" id="txtSpenTime"></label>  					 
+	   						  <label class="titleLabels1" id="txtSpentTime"></label>  					 
 	  						 </div></td>
 	  						 </tr>
 
