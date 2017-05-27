@@ -52,26 +52,83 @@ $(window, document, undefined).ready(function() {
 
 });
 
-
-function liberarEdicao(id, title, description, category, spentTime, created, idDayWeek)
+function formatarData(data)
 {
-  var data = created.split(" ");
-  var data1 = data[0].split("-");
+  var dataVetor = data.split(" ");
+  var data1 = dataVetor[0].split("-");
   var dia=data1[2];
   var mes=data1[1];
   var ano=data1[0];
-  var dataCriacao = dia + '/' + mes + '/' + ano;
-  
+  var dataFormatada = dia + '/' + mes + '/' + ano;
+
+  console.log(dataFormatada);
+
+  return dataFormatada;
+}
+
+function liberarEdicao(id, title, description, category, spentTime, created, date, done)
+{
+  console.log(done);
   document.getElementById("task_id").value = id;
   document.getElementById("task_title").value = title;
   document.getElementById("task_description").value = description;
-  document.getElementById("txtSpenTime").innerHTML = spentTime + " hrs";
+  document.getElementById("txtspentTime").innerHTML = spentTime + " hrs";
   document.getElementById("task_category").value = category;
-  document.getElementById("dataCricao").innerHTML = dataCriacao;
-  document.getElementById("task_day_week").value = idDayWeek;
+  document.getElementById("dataCriacao").innerHTML = formatarData(created);
+  document.getElementById("dataExecucao").innerHTML = formatarData(date);
+  //document.getElementById("switch-1").checked;
+  //$("#switch-1").attr("checked", "checked");
 }
 
 function recarregar()
 {
   location.reload();
+}
+
+function agrupar(id, title, spentTime)
+{
+  if($("#" + id +"_task").hasClass("ativo")){
+
+      $("#selection_" + id).remove();
+      $("#" + id +"_task").removeClass('ativo');
+      subtrairTotal(spentTime);
+
+  }else{
+      document.getElementById("corpoSelecao").innerHTML += gerarLinha(id, title, spentTime);
+      $("#" + id +"_task").addClass('ativo');
+      somarTotal(spentTime);
+  }
+
+}
+
+
+function gerarLinha(id, title, spentTime)
+{
+  var linha = "<tr id=\"selection_" + id + "\">";
+  linha += "<td>" + title + "</td>";
+  linha += "<td>" + spentTime + "</td>";
+  linha += "</tr>";
+
+  return linha;
+}
+
+function somarTotal(novoTempo){
+
+  novoTempo = parseInt(novoTempo);
+  var cont = parseInt(document.getElementById("totalSelection").innerHTML);
+  novoTempo = cont + novoTempo; 
+
+  document.getElementById("totalSelection").innerHTML = novoTempo;
+
+}
+
+
+function subtrairTotal(novoTempo){
+
+  novoTempo = parseInt(novoTempo);
+  var cont = parseInt(document.getElementById("totalSelection").innerHTML);
+  novoTempo = cont - novoTempo; 
+
+  document.getElementById("totalSelection").innerHTML = novoTempo;
+
 }

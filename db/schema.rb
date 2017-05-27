@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20170429060827) do
     t.string   "title"
     t.string   "description"
     t.integer  "spentTime"
-    t.datetime "endDate"
+    t.datetime "date"
     t.integer  "id_category"
     t.integer  "id_user"
+    t.boolean  "done"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "idDayWeek"

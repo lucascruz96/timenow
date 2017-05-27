@@ -4,9 +4,10 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :description
       t.integer :spentTime
-      t.datetime :endDate
+      t.datetime :date
       t.integer :id_category
       t.integer :id_user
+      t.boolean :done
 
       t.timestamps
     end
