@@ -112,14 +112,15 @@ class TasksController < ApplicationController
     	return nova
     end
 
-    def selection(ids)
-        @comando_sql = "SELECT * FROM tasks WHERE id = #{ids}"
-
-        @returno = Task.find_by_sql(@comando_sql)
+    def primeiro_dia_semana
+        @primeiro_dia = Date.today - ((0 - Time.now.wday) * -1)
+        return @primeiro_dia
     end
 
-        def week_tasks(dia)
-        @comando_sql = "SELECT * FROM tasks WHERE idDayWeek = #{dia} ORDER BY date DESC LIMIT 3"
+    def week_tasks(dia)
+        @dia1_semana = primeiro_dia_semana()
+
+        @comando_sql = "SELECT * FROM tasks WHERE idDayWeek = #{dia} AND date >='"+ @dia1_semana.strftime("%Y-%m-%d") +"' AND date <='"+ (@dia1_semana + 6).strftime("%Y-%m-%d") +" 23:59:59' ORDER BY date DESC LIMIT 3"
 
         @sundayTasks = Task.find_by_sql(@comando_sql)
     end
