@@ -104,12 +104,7 @@ class TasksController < ApplicationController
 
     def calc_horas(atual, nova)
     	nova = atual + nova;
-
-    	if(nova == nil)
-    		nova = 0
-    	end
-
-    	return nova
+        return nova == nil ? 0 : nova;
     end
 
     def primeiro_dia_semana
